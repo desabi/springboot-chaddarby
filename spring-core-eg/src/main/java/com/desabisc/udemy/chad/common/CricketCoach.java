@@ -1,4 +1,4 @@
-package com.desabisc.udemy.chad;
+package com.desabisc.udemy.util;
 
 import org.springframework.stereotype.Component;
 
