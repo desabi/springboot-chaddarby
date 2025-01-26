@@ -10,8 +10,14 @@ public class DemoController {
 
     private Coach myCoach;
 
+    /*
     @Autowired
     public DemoController(Coach theCoach) {
+        this.myCoach = theCoach;
+    }*/
+
+    @Autowired
+    private void setMyCoach(Coach theCoach) {
         this.myCoach = theCoach;
     }
 
