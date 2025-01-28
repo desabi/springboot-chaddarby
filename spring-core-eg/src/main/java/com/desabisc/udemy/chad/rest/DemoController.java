@@ -17,10 +17,16 @@ public class DemoController {
         this.myCoach = theCoach;
     }*/
 
+    // Used with @Primary in TrackCoach
     @Autowired
-    private void setMyCoach(@Qualifier("cricketCoach") Coach theCoach) {
+    private void setMyCoach(Coach theCoach) {
         this.myCoach = theCoach;
     }
+
+    /*@Autowired
+    private void setMyCoach(@Qualifier("cricketCoach") Coach theCoach) {
+        this.myCoach = theCoach;
+    }*/
 
     @GetMapping("/dailyworkout")
     public String getDailyWorkout() {
