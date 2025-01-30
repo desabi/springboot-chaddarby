@@ -6,6 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 //@Primary : error more than one 'primary' bean found among candidates
 public class CricketCoach implements Coach {
+
+    public CricketCoach() {
+        System.out.println("In constructor: " + getClass().getSimpleName());
+    }
     @Override
     public String getDailyWorkout() {
         return "Practice Fast Bowling for 15 minutes!!!";

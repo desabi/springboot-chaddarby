@@ -18,15 +18,16 @@ public class DemoController {
     }*/
 
     // Used with @Primary in TrackCoach
-    @Autowired
-    private void setMyCoach(Coach theCoach) {
-        this.myCoach = theCoach;
-    }
-
     /*@Autowired
     private void setMyCoach(@Qualifier("cricketCoach") Coach theCoach) {
         this.myCoach = theCoach;
     }*/
+
+    @Autowired
+    private void setMyCoach(@Qualifier("cricketCoach") Coach theCoach) {
+        System.out.println("In constructor: " + getClass().getSimpleName());
+        this.myCoach = theCoach;
+    }
 
     @GetMapping("/dailyworkout")
     public String getDailyWorkout() {
