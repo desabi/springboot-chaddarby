@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     private Coach myCoach;
+    private Coach anotherCoach;
 
     /*
     @Autowired
@@ -24,9 +25,17 @@ public class DemoController {
     }*/
 
     @Autowired
-    private void setMyCoach(@Qualifier("cricketCoach") Coach theCoach) {
+    private void setMyCoach(
+            @Qualifier("cricketCoach") Coach theCoach,
+            @Qualifier("cricketCoach") Coach anotherCoach) {
         System.out.println("In constructor: " + getClass().getSimpleName());
         this.myCoach = theCoach;
+        this.anotherCoach = anotherCoach;
+    }
+
+    @GetMapping("/check")
+    public String check() {
+        return "Beans are equals: " + this.myCoach.equals(this.anotherCoach);
     }
 
     @GetMapping("/dailyworkout")

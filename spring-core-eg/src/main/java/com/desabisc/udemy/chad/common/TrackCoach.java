@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 // @Primary // There can only be one, it wil be the primary coach
 // and if both primary and qualifier are used, qualifier has high priority.
-
-@Lazy
+// @Lazy
 public class TrackCoach implements Coach {
 
     public TrackCoach() {
