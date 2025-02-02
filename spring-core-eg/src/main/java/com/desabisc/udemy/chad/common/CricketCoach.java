@@ -16,7 +16,7 @@ public class CricketCoach implements Coach {
         System.out.println("In constructor: " + getClass().getSimpleName());
     }
 
-    // define the init method, executes when the project starts.
+    /*// define the init method, executes when the project starts.
     @PostConstruct
     public void doMyStartupStuff() {
         System.out.println("In doMyStartUpStuff(): " + this.getClass().getSimpleName());
@@ -26,7 +26,7 @@ public class CricketCoach implements Coach {
     @PreDestroy
     public void doMyCleanupStuff() {
         System.out.println("In doMyCleanupStuff(): " + this.getClass().getSimpleName());
-    }
+    }*/
 
     @Override
     public String getDailyWorkout() {
