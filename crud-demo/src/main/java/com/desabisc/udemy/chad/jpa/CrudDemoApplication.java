@@ -2,6 +2,7 @@ package com.desabisc.udemy.chad.jpa;
 
 import com.desabisc.udemy.chad.jpa.dao.StudentDAO;
 import com.desabisc.udemy.chad.jpa.entity.Student;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -9,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@Slf4j
 public class CrudDemoApplication {
 
 	public static void main(String[] args) {
@@ -27,8 +27,21 @@ public class CrudDemoApplication {
 		return runner -> {
 			//createStudent(studentDAO);
 			//createMultipleStudents(studentDAO);
-			readStudent(studentDAO);
+			//readStudent(studentDAO);
+			//queryForStudents(studentDAO);
+			queryForStudentsByLastName(studentDAO);
 		};
+	}
+
+	private void queryForStudentsByLastName(StudentDAO studentDAO) {
+		// get a list of students
+		List<Student> students = studentDAO.findByLastName("Doe");
+		// display list of students
+		students.forEach(System.out::println);
+	}
+
+	private void queryForStudents(StudentDAO studentDAO) {
+		studentDAO.findAll().forEach(System.out::println);
 	}
 
 	private void readStudent(StudentDAO studentDAO) {
