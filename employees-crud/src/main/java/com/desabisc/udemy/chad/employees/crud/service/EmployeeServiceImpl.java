@@ -1,41 +1,48 @@
 package com.desabisc.udemy.chad.employees.crud.service;
 
-import com.desabisc.udemy.chad.employees.crud.dao.EmployeeDAO;
+import com.desabisc.udemy.chad.employees.crud.dao.EmployeeRepository;
 import com.desabisc.udemy.chad.employees.crud.entity.Employee;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-  private EmployeeDAO employeeDAO;
+  private EmployeeRepository employeeRepository;
 
-  public EmployeeServiceImpl(EmployeeDAO employeeDAO) {
-    this.employeeDAO = employeeDAO;
+  public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+    this.employeeRepository = employeeRepository;
   }
 
   @Override
   public List<Employee> findAll() {
-    return employeeDAO.findAll();
+    return employeeRepository.findAll();
   }
 
   @Override
   public Employee findById(int theId) {
-    return employeeDAO.findById(theId);
+    Optional<Employee> optionalEmployee = employeeRepository.findById(theId);
+
+    Employee employee = null;
+    if (optionalEmployee.isPresent()) {
+      employee = optionalEmployee.get();
+    } else {
+      throw new RuntimeException("Dis not find employee id - " + theId);
+    }
+
+    return employee;
   }
 
-  @Transactional
   @Override
   public Employee save(Employee theEmployee) {
-    return employeeDAO.save(theEmployee);
+    return employeeRepository.save(theEmployee);
   }
 
-  @Transactional
   @Override
   public void deleteById(int theId) {
-    employeeDAO.deleteById(theId);
+    employeeRepository.deleteById(theId);
   }
 
 }
